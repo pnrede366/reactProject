@@ -11,8 +11,10 @@ const AdminPanel = () => {
        const [datax, setdatax] = useState('')
        const [check, setcheck] = useState(false)
        let history= useHistory();
+
+       let cc=window.screen.width
    useEffect(() => {
- 
+       console.log(window.screen.width);
         axios.get("http://localhost:3000/admin").then(Response=>
        setdatax(Response.data)
        )
@@ -21,14 +23,14 @@ const AdminPanel = () => {
       
        
     
-   }, [])
+   }, [cc])
 
   
 
   const sumbitHandler=(e)=>{
 
       e.preventDefault()
-
+    if(name&&pass){
       if(name==datax[0].name&&pass==datax[0].password){
           console.log("matched");
           localStorage.setItem('admin',true);
@@ -37,10 +39,15 @@ const AdminPanel = () => {
           //    this.history.pushState("http://localhost:3001/AdminPanel");  
             }
       else{
-          console.log("not");
-          setcheck(false)
+
+        alert("wrong email or pass")
+        setcheck(false)
 
       }
+    }
+    else{
+        alert("please enter all fields")
+    }
 
 
    }

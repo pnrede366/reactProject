@@ -7,6 +7,10 @@ import AdminDashboard from "./Admin/AdminDashboard";
 import Home from "./Home";
 import Userlogin from "./Userlogin";
 import CartItem from "./CartItem";
+import Signup from "./Signup";
+import UserDashboard from "./UserDashboard";
+import UserAccount from "./UserAccount";
+import Orders from "./Orders";
 
 const Navbar = () => {
   return (
@@ -45,6 +49,11 @@ const Navbar = () => {
         <Route exact path="/" component={Home} />
         <Route exact path="/cart" component={CartItem} />
         <Route path="/login" component={Userlogin}></Route>
+        <Route path="/signup" component={Signup}></Route>
+        <Route path="/userDashboard" component={UserDashboard}></Route>
+        <Route path="/userAccount" component={UserAccount}></Route>
+        <Route path="/orders" component={Orders}></Route>
+        <Route path="/cart" component={CartItem}></Route>
         
       </Switch>
     </Router>
