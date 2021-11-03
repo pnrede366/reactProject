@@ -1,0 +1,24 @@
+.pImg{
+    width: 15rem;
+}
+
+.pCard{
+    display: flex;
+    
+}
+
+.pMain{
+    display: flex;
+    justify-content: space-around;
+}
+
+.pTitle{
+    text-align: center;
+    font-size: 2rem;
+}
+
+.pPrice{
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}

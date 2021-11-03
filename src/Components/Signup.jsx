@@ -15,7 +15,11 @@ const Signup = () => {
             axios.post('http://localhost:3000/user',{
             name:UserName,
             email:UserEmail,
-            pass:UserPass
+            pass:UserPass,
+            cart:[],
+            adress:'',
+            order:[],
+            mobile:'',pincode:''
         }).then(()=>{alert("Account Created Successfully")})
             }
         else{
