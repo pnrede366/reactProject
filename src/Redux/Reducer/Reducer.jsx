@@ -1,11 +1,7 @@
-const initialState = {
-    cart: []
-}
-const Reducers = (state=[],action) => {
-    if (action.type=='addToCart') {
-            return [
-                ...state,{cart:action.data}
-            ]
+
+const Reducers = (state=0,action) => {
+    if (action.type=='add') {
+            return state+1
     }
     else{
         return state

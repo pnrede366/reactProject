@@ -5,7 +5,7 @@ import axios from 'axios'
 import { useHistory } from 'react-router'
 
 const Placeorder = (props) => {
-      const [Id, setId] = useState(props.location.state)
+      const [Product, setProduct] = useState(props.location.state)
       const  userLoginId=localStorage.getItem("userLogin")
 
 const initialState=''
@@ -13,15 +13,25 @@ const initialState=''
 const [mobile, setmobile] = useState(initialState)
 const [adress, setadress] = useState(initialState)
 const [pincode, setpincode] = useState(initialState)
-    
+const [Orders, setOrders] = useState([])
 const history = useHistory()
+    useEffect(() => {
+       
+        axios.get(`http://localhost:3000/user/${userLoginId}`).then((response)=>{
+            setOrders(response.data.order)
+        })
+    }, [])    
+
     const onSubmitHandler=(e)=>{
+      console.log(Product);
+      console.log(Orders);
+      
         e.preventDefault()
         axios.patch(`http://localhost:3000/user/${userLoginId}`,{
            mobile:mobile,
            address:adress,
-           pincode:pincode
-
+           pincode:pincode,
+            order:[Orders,Product]
        }).then(()=>{
            history.push('/ordersuccess')
        })
@@ -30,6 +40,7 @@ const history = useHistory()
       
           <div className="parent">
          <form className="main mb-5" onSubmit={onSubmitHandler}>
+             
         <h1>Fill out Delivery Details</h1>
         <label htmlFor="">Name</label>
         <input onChange={

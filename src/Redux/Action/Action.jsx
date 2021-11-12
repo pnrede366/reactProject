@@ -1,7 +1,7 @@
 
 const Action = (data) => {
     return {
-       type:'addToCart',
+       type:'add',
        data:data
 
     }

@@ -41,7 +41,7 @@ const Navbar = () => {
         </div>
         <div className="d-flex w-25 justify-content-around">
           <li>
-            <Link to="/cart" >Cart</Link>
+            <Link to="/cart" >WishList</Link>
           </li>
          
         </div>

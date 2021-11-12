@@ -75,6 +75,7 @@ function AdminDashboard() {
       name: PName,
       descr: PDescr,
       price: PPrice,
+      quantity:1
     });
     setPName("");
     setPDescr("");

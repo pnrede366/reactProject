@@ -1,12 +1,8 @@
 .parent {
-    font-size: 2rem;
-    color: black;
+    font-size: 1rem;
+    color: rgb(0, 0, 0);
     background: url(https://images.pexels.com/photos/3184460/pexels-photo-3184460.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
     background-size: cover;
 }
 
-.main {
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 1rem;
 
-}
