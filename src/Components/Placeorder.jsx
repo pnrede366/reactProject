@@ -21,17 +21,22 @@ const history = useHistory()
             setOrders(response.data.order)
         })
     }, [])    
-
     const onSubmitHandler=(e)=>{
-      console.log(Product);
-      console.log(Orders);
-      
+        
+       
         e.preventDefault()
         axios.patch(`http://localhost:3000/user/${userLoginId}`,{
            mobile:mobile,
            address:adress,
            pincode:pincode,
-            order:[Orders,Product]
+           order:''
+       });
+       
+       axios.post(`http://localhost:3000/orders`,{
+        quantity:Product.quantity,
+        product :Product.id,
+        userID:userLoginId
+
        }).then(()=>{
            history.push('/ordersuccess')
        })
@@ -59,7 +64,8 @@ const history = useHistory()
             (e)=>{
                         setadress(e.target.value)
             }
-        } name="sellercity" required className="form-control" placeholder="Enter your address" type="text"/>
+        } name="sellercity
+        " required className="form-control" placeholder="Enter your address" type="text"/>
         <label htmlFor="">Zip code </label>
         <input onChange={
             (e)=>{
