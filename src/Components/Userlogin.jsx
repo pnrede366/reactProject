@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link,useHistory,useLocation } from 'react-router-dom'
-
+import '../Assets/UserLogin.css'
 const Userlogin = () => {
 
 
@@ -66,27 +66,29 @@ const Userlogin = () => {
         console.log(logIn);
     }
     return (
-        <div>
-            {
-                logIn==3?<h1 className="text-danger">Incoreect username or password</h1>:""
-                } 
-             <div className="card w-25 mx-auto mt-5 p-2">
-                 <h3 className="text-center">User Login</h3>
-             <input type="text" className="form-control" placeholder="mobile number" onChange={(e)=>{
+        <div className="userlogin ">
+                <br />
+                <br />
+                <br />
+                <br />
+             <div className="card  mx-auto m-5 p-5 loginCard col-lg-3 col-sm-7 col-md-4 col-8">
+                 <h3 className="text-center text-light">User Login</h3>
+             <input type="text" className="form-control" placeholder="user name" onChange={(e)=>{
                  setname(e.target.value)
-             }}/>
-             <br />
-             <input type="text" className="form-control" placeholder=" password " onChange={(e)=>{
+                }}/>
+             <input type="password" className="form-control" placeholder=" password " onChange={(e)=>{
                  setpass(e.target.value)
-             }}/>
-             <br />
+                }}/>
              <button className="btn btn-primary" onClick={loginCheck}>Login</button>
              <div className="text-center pt-2" style={{color:'blue ',cursor:'pointer'}}>
-                 <Link to="/signup">
+                 <Link to="/signup" className="text-light">
                  Dont Have Account?
                  </Link>
              </div>
              </div>
+             {
+                 logIn==3?<h1 className="text-danger text-center mt-2">Incorrect username or password</h1>:""
+                 } 
         </div>
     )
 }

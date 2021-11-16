@@ -36,6 +36,13 @@ const CartItem = (props) => {
         setremoveProduct(response.data.cart)
       });
   }, []);
+
+
+  useEffect(() => {
+    axios.get(`http://localhost:3000/user/${userLoginId}`).then((response) => {
+      setmyCart(response.data.cart);
+    });
+  }, [myCart])
   // console.log(product[1].id);
 
 
@@ -43,8 +50,7 @@ const CartItem = (props) => {
 
       setremoveProduct((old)=>{
         return old.filter((val,ind)=>{
-          console.log(val);
-          console.log(i);
+         
           return val!=i;
         })
       })      
@@ -60,7 +66,7 @@ const CartItem = (props) => {
         })
       }, [removeProduct])
       
-      console.log(removeProduct);
+    
 
 
 
@@ -82,11 +88,11 @@ const CartItem = (props) => {
             return (
                   myCart.map((cc,j)=>{
                     return (
-                      dd.id==cc?  <div className="d-flex justify-content-around align-items-center mb-5">
-                      <div className="" style={{ width: "15%" }} key={i}>
-                        <div className="card pCard">
+                      dd.id==cc?  <div className="d-flex justify-content-around align-items-center mb-5 ">
+                      <div className="col-3 col-sm-3 col-lg-2"  key={i}>
+                        <div className="card " >
                           <img
-                            className="pImg"
+                            className=""
                             src="https://images.samsung.com/is/image/samsung/p6pim/in/sm-m127gzkhins/gallery/in-galaxy-m-sm-m127gzkhins-front-black-405435102?$684_547_PNG$"
                             alt=""
                           />
@@ -94,7 +100,7 @@ const CartItem = (props) => {
                           <div className="pPrice">{dd.price} ₹</div>
                         </div>
                       </div>
-                      <div className="">
+                      <div className="col-2">
                         <div className="d-flex ">
                           <button
                             className="btn btn-danger"
@@ -122,7 +128,7 @@ const CartItem = (props) => {
                                   quantity: dd.quantity,
                                 })
                               );
-                              console.log(localStorage.getItem(`quantity ${dd.id}`));
+                            
                               setProdArray((old) => {
                                 return [
                                   ...old,
@@ -160,9 +166,9 @@ const CartItem = (props) => {
                           </button>
                         </div>
                       </div>
-                      <div>
+                      <div className="col-4">
                         <button
-                          class="btn btn-warning"
+                          class="btn btn-warning m-2"
                           onClick={() => {
                             history.push("/placeorder",{'id': dd.id,'quantity':dd.quantity});
                           }}

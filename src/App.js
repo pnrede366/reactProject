@@ -6,17 +6,11 @@ import {BrowserRouter as Router , Switch,Link,Route,Redirect,useHistory} from 'r
 import AdminDashboard from './Components/Admin/AdminDashboard';
 import { UserContext } from './Components/ContextData';
 import ProductDetails from './Components/ProductDetails';
-
+import BsNav from './Components/BsNav';
 function App() {
   return (
     <Router>
-      <div className="App">
-      <Navbar/>
-      
-    </div>
-
-
-
+      <BsNav/>      
     </Router>
   );
 }

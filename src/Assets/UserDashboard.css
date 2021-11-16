@@ -1,6 +1,4 @@
-*{
-    color: rgb(56, 56, 56);
-}
+
 
 .box{
     display: flex;
@@ -18,7 +16,11 @@
 }
 
 .main{
+}
+
+.dashboard{
     height:90vh;
         align-items: center;
         font-size: 2rem;
+  
 }

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import {BrowserRouter as Router , Switch,Link,Route,Redirect,useHistory} from 'react-router-dom';
 import AdminDashboard from './AdminDashboard';
-
+import '../../Assets/AdminPanel.css'
 
 const AdminPanel = () => {
     
@@ -40,9 +40,10 @@ const AdminPanel = () => {
             }
       else{
 
-        alert("wrong email or pass")
+        alert("wrong username or pass")
         setcheck(false)
-
+          setname('')
+          setpass('')
       }
     }
     else{
@@ -54,10 +55,10 @@ const AdminPanel = () => {
 
 
     return (
-            <div>
-            <form onSubmit={sumbitHandler} className="card w-25 mx-auto mt-5 p-5 bg-primary">
+            <div className="adminPanel">
+            <form onSubmit={sumbitHandler} className="card  mx-auto  p-5 loginCard col-lg-3 col-sm-8 col-md-4 col-10">
 
-                <input type="text" className="form-control " placeholder="name" value={name} onChange={(e)=>{
+                <input type="text" className="form-control " placeholder="user name" value={name} onChange={(e)=>{
                     setname(e.target.value)
                 }}/>
                 <br />

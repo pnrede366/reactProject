@@ -11,29 +11,24 @@ const ProductDetails = (props) => {
 
      useEffect(() => {
     setId(props.location.state)        
-          
+  console.log('id',props.location.state.id);          
     axios.get(`http://localhost:3000/product`).then((response)=>{
       setproduct(response.data);
-      console.log(response.data);
     });
-   
+      console.log(product);
  
   }, [])
     return (
         <div>
        {
          product.map((dd,i)=>{
-           if (dd.id==Id) {
-             return (
+           if (dd.id==props.location.state.id) {
+           return (
               <div class='product'>
               <div class='product-1'>
-                  <img src='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fphotogallery.indiatimes.com%2Fphoto%2F27299395.cms&f=1&nofb=1' alt='' style={{'width':'40rem'}}/>
+                  <img src='https://images.pexels.com/photos/193004/pexels-photo-193004.jpeg?cs=srgb&dl=pexels-torsten-dettlaff-193004.jpg&fm=jpg' alt='' style={{'width':'40rem',height:'50vh'}}/>
                   <div class='d-flex'>
-                  <button class='btn btn-warning btn-block' onClick={
-                    ()=>{
-                      history.push('/placeorder',props.location.state)
-                    }
-                  }>Buy Now</button>
+                  
                   </div>
               </div>
               <div class='product-2'>
@@ -43,11 +38,19 @@ const ProductDetails = (props) => {
                   
                   <div>
                   <h5>Available Offers</h5>
-                  <div><i class='fa fa-tag text-success py-2' aria-hidden='true'></i>  Bank Offer5% Unlimited Cashback on Flipkart Axis Bank Credit Card<a href='' class='text-primary px-1'>T&C</a></div>
-                  <div><i class='fa fa-tag text-success py-2' aria-hidden='true'></i>Bank Offer10% Off on Bank of Baroda Mastercard debit card first time transaction<a href='' class='text-primary px-1'>T&C</a></div>
-                  <div><i class='fa fa-tag text-success py-2' aria-hidden='true'></i>Special PriceGet extra 10% off (price inclusive of discount)<a href='' class='text-primary px-1'>T&C</a></div>
-                  <div><i class='fa fa-calendar-check-o text-primary py-2' aria-hidden='true'></i>No Cost EMI on Bajaj Finserv EMI Card on cart value above ₹4499<a href='' class='text-primary px-1'>T&C</a></div>
-                  
+                  <div><i class='fa fa-tag text-success py-2' aria-hidden='true'></i>  Bank Offer5% Unlimited Cashback on Flipkart Axis Bank Credit Card
+                  T&C</div>
+                  <div><i class='fa fa-tag text-success py-2' aria-hidden='true'></i>Bank Offer10% Off on Bank of Baroda Mastercard debit card first time transaction
+                  T&C</div>
+                  <div><i class='fa fa-tag text-success py-2' aria-hidden='true'></i>Special PriceGet extra 10% off (price inclusive of discount)
+                  T&C</div>
+                  <div><i class='fa fa-calendar-check-o text-primary py-2' aria-hidden='true'></i>No Cost EMI on Bajaj Finserv EMI Card on cart value above ₹4499
+                  T&C</div>
+                  <button class='btn btn-warning ' onClick={
+                    ()=>{
+                      history.push('/placeorder',props.location.state)
+                    }
+                  }>Buy Now</button>
                   </div>
               </div>
           </div>

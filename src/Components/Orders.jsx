@@ -17,7 +17,9 @@ const Orders = () => {
   }, []);
   return (
     <div>
-        <h1>Your Orders</h1>
+        <h1 className="text-center"> Your Orders</h1>
+        <br />
+        <div className="d-flex justify-content-around flex-wrap">
       {Products.map((dd, i) => {
         return Data.map((cc, j) => {
           return dd.userID == userLoginId && dd.product == cc.id ? (
@@ -41,6 +43,7 @@ const Orders = () => {
         });
       })}
     </div>
+  </div>
   );
 };
 

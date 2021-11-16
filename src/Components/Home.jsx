@@ -52,7 +52,7 @@ useEffect(() => {
 return (
 <div>
 
-<div className="d-flex justify-content-around mt-2"> 
+<div className="d-flex justify-content-around mt-2 flex-wrap"> 
 
   
 {
