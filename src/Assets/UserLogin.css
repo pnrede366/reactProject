@@ -4,5 +4,13 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url('https://images.pexels.com/photos/1714205/pexels-photo-1714205.jpeg?cs=srgb&dl=pexels-josh-sorenson-1714205.jpg&fm=jpg');
+    background-image: url('./log-secured-access-verify-identity-password-concept.jpg');
+}
+
+.signupMain{
+    height: 100vh;
+    background-image: url('./log-secured-access-verify-identity-password-concept.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }

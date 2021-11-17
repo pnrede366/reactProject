@@ -74,14 +74,14 @@ const CartItem = (props) => {
     history.push("/login");
   }
 
-  return (
-    <div>
-      <h3 className="text-center">
+  return ( 
+    <div style={{backgroundColor:'#fff',height:'100vh'}}>
+      <h3 className="text-center" >
         Cart
         <i class="fa text-dark fa-cart-plus" aria-hidden="true"></i>
       </h3>
 
-      <div className="">
+      <div className="" >
         {product.map((dd, i) => {
           // if (dd.id == myCart[i])
           
@@ -89,7 +89,7 @@ const CartItem = (props) => {
                   myCart.map((cc,j)=>{
                     return (
                       dd.id==cc?  <div className="d-flex justify-content-around align-items-center mb-5 ">
-                      <div className="col-3 col-sm-3 col-lg-2"  key={i}>
+                      <div className="col-3 col-sm-3 col-lg-2"  key={i} >
                         <div className="card " >
                           <img
                             className=""

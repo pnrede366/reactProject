@@ -81,7 +81,7 @@ const Userlogin = () => {
                 }}/>
              <button className="btn btn-primary" onClick={loginCheck}>Login</button>
              <div className="text-center pt-2" style={{color:'blue ',cursor:'pointer'}}>
-                 <Link to="/signup" className="text-light">
+                 <Link to="/signup" className="text-primary">
                  Dont Have Account?
                  </Link>
              </div>

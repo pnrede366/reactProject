@@ -7,10 +7,14 @@ import AdminDashboard from './Components/Admin/AdminDashboard';
 import { UserContext } from './Components/ContextData';
 import ProductDetails from './Components/ProductDetails';
 import BsNav from './Components/BsNav';
+import LandingPage from './Components/LandingPage';
 function App() {
   return (
     <Router>
-      <BsNav/>      
+      <div>
+
+      <BsNav/>
+      </div>
     </Router>
   );
 }

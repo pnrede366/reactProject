@@ -1,3 +1,7 @@
+.mainHome{
+    background-color: rgb(245, 253, 255);
+}
+
 .pImg{
     width: 15rem;
 }
@@ -22,3 +26,69 @@
     font-size: 1.5rem;
     font-weight: bold;
 }
+
+.main_wrapper{
+    height: 100vh;
+    width: 100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-around;        
+    color:grey;
+    background:url('./6249980.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    
+}
+
+.home-wrapper{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    
+}
+    .title_main{
+        color:#fff;
+        font-size:5rem;
+        font-weight:800;
+    }
+
+    .text_main{
+        color:white;
+        font-size:1.5rem;
+        width:70%;
+        margin:1.5rem 0;
+
+    }
+
+    .btn_main_1{
+        border:2px solid white;
+        background-color:transparent;
+        color:white;
+        padding:1rem 3rem;
+        font-weight:800;
+        margin:0 2rem 0 0;
+    }
+
+    .btn_main_2{
+        color:black;
+        border:2px solid white;
+        background-color:#ffe;
+        padding:1rem 3.5rem;
+        font-weight:800;
+
+    }
+
+    .btn_main_1:hover{
+        color:black;
+        border:2px solid white;
+        background-color:#fff;
+        }            
+
+     .btn_main_2:hover{
+         color:white;
+        border:2px solid white;
+        background-color:transparent;
+    
+    
+     }

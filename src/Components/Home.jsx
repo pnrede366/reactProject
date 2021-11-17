@@ -5,6 +5,7 @@ import Products from "./Products";
 import axios from "axios";
 import '../Assets/Product.css'
 import { Toast,Row,Col,Button,ToastContainer } from "react-bootstrap";
+import LandingPage from "./LandingPage";
 const Home = () => {
   const [show, setShow] = useState(false)
   const [Data, setData] = useState([])
@@ -50,23 +51,30 @@ useEffect(() => {
       
 
 return (
-<div>
-
-<div className="d-flex justify-content-around mt-2 flex-wrap"> 
+<div  >
+<LandingPage/>
+<div className="d-flex justify-content-around pt-5 flex-wrap mainHome"> 
 
   
 {
 Data.map((dd,i)=>{
   return (
     <div className="pMain" key={i}>
-<div className="card pCard" >
+<div className="card pCard"  style={{backgroundColor:'#fff'}}>
      <img className="pImg" src="https://images.samsung.com/is/image/samsung/p6pim/in/sm-m127gzkhins/gallery/in-galaxy-m-sm-m127gzkhins-front-black-405435102?$684_547_PNG$" alt="" />
-     <div className="pTitle">{dd.name}</div>
+    <div className="d-flex justify-content-between card-footer">
+    <div className="pTitle">{dd.name}</div>
      <div className="pPrice" >{dd.price} ₹</div>
-     <button className=" btn btn-outline-primary" onClick={()=>{
+    </div>
+    <div className="d-flex btn-group buttonGroup" >
+    <button className=" btn btn-outline-primary" onClick={()=>{
+                              history.push("/productDetails", {'id': dd.id,'quantity':dd.quantity});
+                            }}>Buy Now</button>
+ <button className=" btn btn-outline-primary" onClick={()=>{
          addToCart(dd.id)
      }}>Add To WishList</button>
 
+    </div>
  </div>
 </div>
   )

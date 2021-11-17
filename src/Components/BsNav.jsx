@@ -22,32 +22,32 @@ const BsNav = () => {
       <Router>
         <div>
      
-     <Navbar bg="dark" expand="lg" >
+     <Navbar bg="light" expand="lg" className="p-3">
   <Container className="navConatiner">
-    <Navbar.Brand className="text-light">PrCart</Navbar.Brand>
+    <Navbar.Brand className="text-dark">PrCart</Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
-      <Nav className="me-auto" >
-        <Nav.Link className="text-light" >           
-         <Link to="/" className="text-light text-decoration-none"> 
+      <Nav className="me-auto d-flex justify-content-around w-100 " >
+        <Nav.Link className="text-dark" >           
+         <Link to="/" className="text-dark text-decoration-none"> 
         Home
          </Link>
         </Nav.Link>
-        <Nav.Link className="text-light">
-        <Link to="/AdminPanel" className="text-light text-decoration-none">
+        <Nav.Link className="text-dark">
+        <Link to="/AdminPanel" className="text-dark text-decoration-none">
            Admin
            </Link>
         </Nav.Link>
         
-        <Nav.Link  className="text-light">
-        <Link to="/login"  className="text-light text-decoration-none">
+        <Nav.Link  className="text-dark">
+        <Link to="/login"  className="text-dark text-decoration-none">
           Login
           </Link>
         </Nav.Link>
 
         <Nav.Link  >
-        <Link  to="/cart"  className="text-light text-decoration-none">
-          WishList
+        <Link  to="/cart"  className="text-dark text-decoration-none">
+          WishList <i class="fa fa-cart-plus text-dark" aria-hidden="true"></i>
           </Link>
         </Nav.Link>
 

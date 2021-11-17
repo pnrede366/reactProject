@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-
+import '../Assets/UserLogin.css'
 const Signup = () => {
   const [UserName, setUserName] = useState("")
     const [UserEmail, setUserEmail] = useState("")
@@ -39,7 +39,7 @@ const Signup = () => {
 
     }
   return (
-    <div>
+    <div className="signupMain p-1">
       <form  onSubmit={onSubmitHandler}>
         <div className="container w-50  p-2 card">
           <div className="d-flex ">
