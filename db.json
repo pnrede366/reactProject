@@ -1,0 +1,447 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "name": "dfsdf",
+      "descr": "ew",
+      "price": "34243",
+      "id": 2
+    },
+    {
+      "name": "",
+      "descr": "",
+      "price": "",
+      "id": 3
+    },
+    {
+      "name": "fds",
+      "descr": "",
+      "price": "34",
+      "id": 4
+    },
+    {
+      "name": "rew",
+      "descr": "wre",
+      "priority": "high",
+      "id": 5
+    }
+  ],
+  "product": [
+    {
+      "name": "fds",
+      "descr": "ho",
+      "price": "36",
+      "quantity": 1,
+      "id": 2
+    },
+    {
+      "name": "oppo",
+      "descr": "sd",
+      "price": "5000",
+      "quantity": 1,
+      "id": 6
+    },
+    {
+      "name": "iphone",
+      "descr": "next gen",
+      "price": "120000",
+      "path": "",
+      "quantity": 1,
+      "id": 7
+    },
+    {
+      "name": "qqqq",
+      "descr": "qqqq",
+      "price": "1230",
+      "path": "",
+      "quantity": 1,
+      "id": 8
+    }
+  ],
+  "admin": [
+    {
+      "name": "prp",
+      "password": 123
+    }
+  ],
+  "user": [
+    {
+      "name": "",
+      "email": "",
+      "pass": "",
+      "id": 1
+    },
+    {
+      "name": "sad",
+      "email": "dsas",
+      "pass": "ds",
+      "id": 2
+    },
+    {
+      "name": "sd",
+      "email": "asd",
+      "pass": "sda",
+      "id": 3
+    },
+    {
+      "name": "sd",
+      "email": "rdf",
+      "pass": "sda",
+      "id": 4
+    },
+    {
+      "name": "sd",
+      "email": "rdf",
+      "pass": "sda",
+      "id": 5
+    },
+    {
+      "cart": "",
+      "id": 6
+    },
+    {
+      "name": "rr",
+      "email": "rr",
+      "pass": "rr",
+      "id": 7,
+      "cart": []
+    },
+    {
+      "cart": [],
+      "id": 8
+    },
+    {
+      "name": "ss",
+      "email": "ss",
+      "pass": "ss",
+      "cart": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        7,
+        7,
+        6,
+        6,
+        6,
+        6,
+        2,
+        8,
+        7,
+        6,
+        7
+      ],
+      "id": 9,
+      "mobile": "8483955960",
+      "address": "Matsyodari Shale Samor,nutan vasahat ambad",
+      "pincode": "431204"
+    },
+    {
+      "id": 10
+    },
+    {
+      "mobile": "",
+      "address": "",
+      "pincode": "",
+      "id": 11
+    },
+    {
+      "mobile": "8483955960",
+      "address": "Matsyodari Shale Samor,nutan vasahat ambad",
+      "pincode": "431204",
+      "id": 12
+    },
+    {
+      "name": "cc",
+      "email": "cc",
+      "pass": "cc",
+      "cart": [],
+      "adress": "",
+      "order": [],
+      "mobile": "8483955960",
+      "pincode": "431204",
+      "id": 13,
+      "address": "Matsyodari Shale Samor,nutan vasahat ambad"
+    },
+    {
+      "name": "ww",
+      "email": "ww",
+      "pass": "ww",
+      "cart": [
+        2,
+        6,
+        7
+      ],
+      "adress": "",
+      "order": [],
+      "mobile": "8483955960",
+      "pincode": "431204",
+      "id": 14,
+      "address": "Matsyodari Shale Samor,nutan vasahat ambad"
+    },
+    {
+      "name": "cc",
+      "email": "cc",
+      "pass": "cc",
+      "cart": [
+        2,
+        6,
+        2,
+        6,
+        7
+      ],
+      "adress": "",
+      "order": [
+        [
+          [
+            {
+              "id": 6,
+              "quantity": 1
+            },
+            {
+              "id": 6,
+              "quantity": 1
+            }
+          ],
+          {
+            "id": 2,
+            "quantity": 1
+          }
+        ],
+        {
+          "id": 2,
+          "quantity": 1
+        }
+      ],
+      "mobile": "8483955960",
+      "pincode": "431204",
+      "id": 15,
+      "address": "Matsyodari Shale Samor,nutan vasahat ambad"
+    },
+    {
+      "name": "tt",
+      "email": "tt",
+      "pass": "tt",
+      "cart": [
+        2,
+        6,
+        6,
+        7,
+        7
+      ],
+      "adress": "",
+      "order": [
+        [
+          [],
+          {
+            "id": 2,
+            "quantity": 1
+          }
+        ],
+        {
+          "id": 6,
+          "quantity": 1
+        }
+      ],
+      "mobile": "8483955960",
+      "pincode": "431204",
+      "id": 16,
+      "address": "Matsyodari Shale Samor,nutan vasahat ambad"
+    },
+    {
+      "name": "qw",
+      "email": "qw",
+      "pass": "qw",
+      "cart": [
+        2,
+        6
+      ],
+      "adress": "",
+      "order": [
+        [
+          {
+            "Orders": {
+              "Orders": [],
+              "Product": {
+                "id": 2,
+                "quantity": 1
+              }
+            },
+            "Product": {
+              "id": 6,
+              "quantity": 1
+            }
+          },
+          {
+            "id": 2,
+            "quantity": 1
+          }
+        ],
+        {
+          "id": 2,
+          "quantity": 1
+        }
+      ],
+      "mobile": "9192939495",
+      "pincode": "431204",
+      "id": 17,
+      "address": "Matsyodari Shale Samor,nutan vasahat ambad",
+      "Product": {
+        "id": 6,
+        "quantity": 1
+      }
+    },
+    {
+      "name": "ff",
+      "email": "ff",
+      "pass": "ff",
+      "cart": [
+        2,
+        6
+      ],
+      "adress": "",
+      "order": [
+        [
+          [
+            []
+          ],
+          [
+            {
+              "id": 2,
+              "quantity": 1
+            }
+          ]
+        ],
+        [
+          {
+            "id": 2,
+            "quantity": 1
+          }
+        ]
+      ],
+      "mobile": "9192939495",
+      "pincode": "431204",
+      "id": 18,
+      "address": "Matsyodari Shale Samor,nutan vasahat ambad"
+    },
+    {
+      "name": "g",
+      "email": "g",
+      "pass": "g",
+      "cart": [
+        2,
+        6,
+        7
+      ],
+      "adress": "",
+      "order": [
+        [
+          [
+            [],
+            [
+              {
+                "id": 2,
+                "quantity": 1
+              }
+            ]
+          ],
+          [
+            {
+              "id": 6,
+              "quantity": 1
+            }
+          ]
+        ],
+        [
+          {
+            "id": 7,
+            "quantity": 1
+          }
+        ]
+      ],
+      "mobile": "9192939495",
+      "pincode": "431204",
+      "id": 19,
+      "address": "Matsyodari Shale Samor,nutan vasahat ambad"
+    },
+    {
+      "name": "d",
+      "email": "d",
+      "pass": "d",
+      "cart": [
+        6,
+        7
+      ],
+      "adress": "",
+      "order": [],
+      "mobile": "",
+      "pincode": "",
+      "id": 20
+    },
+    {
+      "name": "ajay",
+      "email": "pnrede366@gmail.com",
+      "pass": "prp",
+      "cart": [],
+      "adress": "",
+      "order": "",
+      "mobile": "9192939495",
+      "pincode": "431204",
+      "id": 21,
+      "address": "Matsyodari Shale Samor,nutan vasahat ambad"
+    }
+  ],
+  "orders": [
+    {
+      "id": 0,
+      "quantitiy": 0,
+      "products": 0,
+      "userID": ""
+    },
+    {
+      "quantity": 1,
+      "product": 2,
+      "userID": "20",
+      "id": 1
+    },
+    {
+      "quantity": 1,
+      "product": 6,
+      "userID": "20",
+      "id": 2
+    },
+    {
+      "quantity": 1,
+      "product": 7,
+      "userID": "20",
+      "id": 3
+    },
+    {
+      "quantity": 1,
+      "product": 6,
+      "userID": "21",
+      "id": 4
+    },
+    {
+      "quantity": 1,
+      "product": 7,
+      "userID": "21",
+      "id": 5
+    },
+    {
+      "quantity": 3,
+      "product": 2,
+      "userID": "21",
+      "id": 6
+    }
+  ]
+}
