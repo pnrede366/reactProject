@@ -4,29 +4,26 @@ import { useHistory } from "react-router";
 import '../Assets/ProductDetails.css'
 
 const ProductDetails = (props) => {
-  console.log('porps',props.location.state);
      const [product, setproduct] = useState([]) 
   const [Id, setId] = useState('')
   const history = useHistory();
 
      useEffect(() => {
     setId(props.location.state)        
-  console.log('id',props.location.state.id);          
     axios.get(`http://localhost:3000/product`).then((response)=>{
       setproduct(response.data);
     });
-      console.log(product);
  
   }, [])
     return (
-        <div>
+        <div className="productDetailsBg">
        {
          product.map((dd,i)=>{
            if (dd.id==props.location.state.id) {
            return (
-              <div class='product'>
-              <div class='product-1'>
-                  <img src='https://images.pexels.com/photos/193004/pexels-photo-193004.jpeg?cs=srgb&dl=pexels-torsten-dettlaff-193004.jpg&fm=jpg' alt='' style={{'width':'40rem',height:'50vh'}}/>
+              <div class='product d-flex justify-content-around'>
+              <div class='product-1 '>
+                  <img src={dd.path} alt='' style={{height:'50vh'}}/>
                   <div class='d-flex'>
                   
                   </div>

@@ -14,7 +14,7 @@ const AdminPanel = () => {
 
        let cc=window.screen.width
    useEffect(() => {
-       console.log(window.screen.width);
+    //    console.log(window.screen.width);
         axios.get("http://localhost:3000/admin").then(Response=>
        setdatax(Response.data)
        )
@@ -62,7 +62,7 @@ const AdminPanel = () => {
                     setname(e.target.value)
                 }}/>
                 <br />
-                <input type="text" className="form-control " placeholder="password" value={pass} onChange={(e)=>{
+                <input type="password" className="form-control " placeholder="password" value={pass} onChange={(e)=>{
                     setpass(e.target.value)
                 }} />
                 <br />

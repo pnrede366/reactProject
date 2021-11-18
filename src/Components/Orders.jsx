@@ -9,14 +9,14 @@ const Orders = () => {
   useEffect(() => {
     axios.get(`http://localhost:3000/orders`).then((response) => {
       setProducts(response.data);
-      console.log("prod", response.data);
+      // console.log("prod", response.data);
     });
     axios
       .get("http://localhost:3000/product")
       .then((response) => setData(response.data));
   }, []);
   return (
-    <div>
+    <div  style={{height:'80vh'}}>
         <h1 className="text-center"> Your Orders</h1>
         <br />
         <div className="d-flex justify-content-around flex-wrap">
@@ -29,7 +29,8 @@ const Orders = () => {
                 <div className="card pCard">
                   <img
                     className="pImg"
-                    src="https://images.samsung.com/is/image/samsung/p6pim/in/sm-m127gzkhins/gallery/in-galaxy-m-sm-m127gzkhins-front-black-405435102?$684_547_PNG$"
+                    style={{height:'15rem'}}
+                    src={cc.path}
                     alt=""
                   />
                   <div className="pTitle">{cc.name}</div>

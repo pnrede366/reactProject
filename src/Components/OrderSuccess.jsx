@@ -21,7 +21,7 @@ setTimeout(() => {
 }, 1000);
 
     return (
-        <div className="parent">
+         <div className="parent p-1">
                 <div class="m-5  d-flex flex-column align-items-center p-5">
 
 <h1 class="">Order Successful</h1>

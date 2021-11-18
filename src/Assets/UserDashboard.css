@@ -5,18 +5,17 @@
 
     align-items: center;
     border-radius: 2px;
-    box-shadow: 0px 0px 5px 2px rgb(41, 160, 193);
-
+    
+    box-shadow: 0px 0px 5px 2px rgb(143, 143, 143);
     
 }
 
 .box:hover{
     cursor: pointer;    
-    box-shadow: 0px 0px 5px 2px rgb(216, 34, 116);
+    box-shadow: 0px 0px 5px 2px rgb(255, 249, 249);
 }
 
-.main{
-}
+
 
 .dashboard{
     height:90vh;

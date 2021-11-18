@@ -8,12 +8,14 @@ import { UserContext } from './Components/ContextData';
 import ProductDetails from './Components/ProductDetails';
 import BsNav from './Components/BsNav';
 import LandingPage from './Components/LandingPage';
+import Footer from './Components/Footer';
 function App() {
   return (
     <Router>
       <div>
 
       <BsNav/>
+      <Footer/>
       </div>
     </Router>
   );

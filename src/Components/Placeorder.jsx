@@ -7,14 +7,16 @@ import { useHistory } from 'react-router'
 const Placeorder = (props) => {
       const [Product, setProduct] = useState(props.location.state)
       const  userLoginId=localStorage.getItem("userLogin")
-
-const initialState=''
+      const initialState=''
+      const history = useHistory()
+      if(!userLoginId){
+          history.push('/login')
+      }
       const [name, setname] = useState(initialState)
-const [mobile, setmobile] = useState(initialState)
-const [adress, setadress] = useState(initialState)
+      const [mobile, setmobile] = useState(initialState)
+      const [adress, setadress] = useState(initialState)
 const [pincode, setpincode] = useState(initialState)
 const [Orders, setOrders] = useState([])
-const history = useHistory()
     useEffect(() => {
        
         axios.get(`http://localhost:3000/user/${userLoginId}`).then((response)=>{
@@ -44,6 +46,8 @@ const history = useHistory()
       return (
       
           <div className="parent">
+              <br /><br />
+
          <form className="main mb-5" onSubmit={onSubmitHandler}>
              
         <h1>Fill out Delivery Details</h1>

@@ -88,12 +88,12 @@ const CartItem = (props) => {
             return (
                   myCart.map((cc,j)=>{
                     return (
-                      dd.id==cc?  <div className="d-flex justify-content-around align-items-center mb-5 ">
-                      <div className="col-3 col-sm-3 col-lg-2"  key={i} >
-                        <div className="card " >
+                      dd.id==cc?  <div className="d-flex justify-content-around align-items-center mb-5 mb-1" >
+                      <div className="col-3 col-sm-3 col-lg-1"  key={i} >
+                        <div className="card img-fluid " >
                           <img
                             className=""
-                            src="https://images.samsung.com/is/image/samsung/p6pim/in/sm-m127gzkhins/gallery/in-galaxy-m-sm-m127gzkhins-front-black-405435102?$684_547_PNG$"
+                            src={dd.path}
                             alt=""
                           />
                           <div className="pTitle">{dd.name}</div>
@@ -105,7 +105,7 @@ const CartItem = (props) => {
                           <button
                             className="btn btn-danger"
                             onClick={(e) => {
-                              if (dd.quantity > 0) {
+                              if (dd.quantity > 1) {
                                 // console.log(dd.quantity-=1)
                                 setCounter((dd.quantity -= 1));
                                 setProductPrice(dd.price * dd.quantity);

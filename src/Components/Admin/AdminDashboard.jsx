@@ -38,6 +38,7 @@ function AdminDashboard() {
         descr: PDescr,
         price: PPrice,
         path: PPath,
+        quantity:1
       })
       .then((Response) => console.log("added"));
       alert("Data Added Successfully")
@@ -47,20 +48,21 @@ function AdminDashboard() {
   };
 
   const deleteTask = (i) => {
-    console.log(i);
-    console.log(`http://localhost:3000/product/${i}`);
+    // console.log(i);
+    // console.log(`http://localhost:3000/product/${i}`);
     axios
       .delete(`http://localhost:3000/product/${i}`)
-      .then((Response) => console.log("deleted"));
+      // .then((Response) => console.log("deleted"));
   };
   const edit = (i, j) => {
-    console.log(i);
+    // console.log(i);
     setShow(true)  
-    console.log("hihihi");
-    console.log(getData[j]);
+    // console.log("hihihi");
+    // console.log(getData[j]);
     setPName(getData[j].name);
     setPDescr(getData[j].descr);
     setPPrice(getData[j].price);
+    setPPath(getData[j].path);
 
     // axios.get("http://localhost:3000/posts").then(Response=>setData(Response.data))
 
@@ -70,12 +72,13 @@ function AdminDashboard() {
   };
 
   const update = (i) => {
-    console.log(i);
+    // console.log(i);
     axios.put(`http://localhost:3000/product/${i}`, {
       name: PName,
       descr: PDescr,
       price: PPrice,
-      quantity:1
+      quantity:1,
+      path:PPath
     });
     setPName("");
     setPDescr("");
@@ -93,14 +96,15 @@ function AdminDashboard() {
           }     
           </Switch>   
       </Route>
-      <div className="card w-25 p-2 mx-auto mt-5">
+      <div className="card w-25 mx-auto mt-5">
+      <h2 className="text-center text-primary">Add Product</h2>
         <form onSubmit={submitHandler}>
           <input
             onChange={(e) => {
               setPPath(e.target.value);
             }}
             className="form-control"
-            type="file"
+            type="text" placeholder="Enter Link Of Product"
           />{" "}
           <br />
           <input required
@@ -113,7 +117,7 @@ function AdminDashboard() {
             placeholder="Product Name"
           />{" "}
           <br />
-          <input required
+          <textarea required
             onChange={(e) => {
               setPDescr(e.target.value);
             }}
@@ -150,15 +154,15 @@ function AdminDashboard() {
         </h3>
       </div>
 
-      <div className="d-flex flex-wrap justify-content-around">
+      <div className="d-flex flex-wrap justify-content-between px-2">
         {getData.map((dd, j) => {
           return (
             <div key={j} className="products">
               <div className="m-2 p-2" style={productStyle}>
                 <div className="">
                   <img
-                    style={{ width: "100%" }}
-                    src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.s6j0uFV2fDG661aVu1BvIAHaFS%26pid%3DApi&f=1"
+                    style={{ width: "100%",height:'15rem' }}
+                    src={dd.path}
                     alt=""
                   />
                 </div>

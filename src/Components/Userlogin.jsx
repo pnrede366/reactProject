@@ -13,10 +13,7 @@ const Userlogin = () => {
 
    let history=useHistory();
    let location=useLocation();
-   console.log(history);
-   console.log(location);
    let lsUser=localStorage.getItem('userLogin');
-   console.log(lsUser+"ok");
    if (lsUser) {
        history.push('/userDashboard')
    }
@@ -29,13 +26,10 @@ const Userlogin = () => {
     let loginData="ok"
     const loginCheck = () =>{
         
-        console.log(User);
         
         if (name&&pass) {
         User.map((data,i)=>{
                     // while(data.name==name&&data.pass==pass){
-                    //     console.clear()
-                    //     console.log("login true");
                     // }
                     
                     
@@ -63,7 +57,6 @@ const Userlogin = () => {
                 alert("all fields required")
             }
 
-        console.log(logIn);
     }
     return (
         <div className="userlogin ">
@@ -71,7 +64,7 @@ const Userlogin = () => {
                 <br />
                 <br />
                 <br />
-             <div className="card  mx-auto m-5 p-5 loginCard col-lg-3 col-sm-7 col-md-4 col-8">
+             <div className="card  mx-auto m-5 p-5 loginCard col-lg-3 col-sm-7 col-md-4 col-10">
                  <h3 className="text-center text-light">User Login</h3>
              <input type="text" className="form-control" placeholder="user name" onChange={(e)=>{
                  setname(e.target.value)

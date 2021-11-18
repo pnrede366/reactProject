@@ -21,7 +21,7 @@ useEffect(() => {
            );
            axios.get(`http://localhost:3000/user/${userLoginId}`).then((response)=>{
             setCart(response.data.cart)
-            console.log(response.data.order);
+            // console.log(response.data.order);
            })
 
     }, [])
@@ -53,39 +53,41 @@ useEffect(() => {
 return (
 <div  >
 <LandingPage/>
-<div className="d-flex justify-content-around pt-5 flex-wrap mainHome"> 
+<div className="d-flex justify-content-between pt-5 px-2 flex-wrap mainHome"> 
 
   
 {
-Data.map((dd,i)=>{
-  return (
-    <div className="pMain" key={i}>
-<div className="card pCard"  style={{backgroundColor:'#fff'}}>
-     <img className="pImg" src="https://images.samsung.com/is/image/samsung/p6pim/in/sm-m127gzkhins/gallery/in-galaxy-m-sm-m127gzkhins-front-black-405435102?$684_547_PNG$" alt="" />
-    <div className="d-flex justify-content-between card-footer">
-    <div className="pTitle">{dd.name}</div>
-     <div className="pPrice" >{dd.price} ₹</div>
-    </div>
-    <div className="d-flex btn-group buttonGroup" >
-    <button className=" btn btn-outline-primary" onClick={()=>{
-                              history.push("/productDetails", {'id': dd.id,'quantity':dd.quantity});
-                            }}>Buy Now</button>
- <button className=" btn btn-outline-primary" onClick={()=>{
-         addToCart(dd.id)
-     }}>Add To WishList</button>
-
-    </div>
- </div>
-</div>
-  )
+  Data.map((dd,i)=>{
+    return (
+    <div className="pMain mb-5 w-25" key={i}>
+  
+<div className="card pCard p-1"  style={{backgroundColor:'#fff'}}>
+   <div className="card-header">
+   <img className="pImg" src={dd.path}  style={{height:'12rem'}}/>
+   </div>
+    <div className="pTitle m-1">{dd.name}</div>    
+     <div className="pPrice m-1" >Price: ₹ <span className="text-danger">{dd.price}</span> </div>
+    <div className=" btn-group buttonGroup w-100 mt-2" >
+    <button className=" btn btn-outline-danger " onClick={()=>{
+                                history.push("/productDetails", {'id': dd.id,'quantity':dd.quantity});
+                              }}>Buy Now <i class="fa fa-shopping-bag" aria-hidden="true"></i></button>
+   <button className=" btn btn-outline-primary " onClick={()=>{
+             addToCart(dd.id)
+         }}>Add To WishList <i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+    
+        </div>
+     </div>
+  </div> 
+   ) 
   
 })
 }
 </div>
-
+  
 <Row>
+<div style={{position:'relative',bottom:'0rem'}}>
       <Col xs={6}>
-     <ToastContainer position={position} className="m-5">
+     <ToastContainer position={position} className="m-5 position-absolute">
      <Toast position={position} onClose={() => setShow(false)} show={show} delay={3000} autohide>
           <Toast.Header>
             <img
@@ -101,9 +103,12 @@ Data.map((dd,i)=>{
         </Toast>
      </ToastContainer>
       </Col>
+</div>
       
     </Row>
-              </div>
+  
+
+            </div>
 )
 }
 

@@ -15,11 +15,11 @@ const UserAccount = () => {
         })
         
      }, [])
-     console.log(Data);
+    //  console.log(Data);
 
     return (
-        <div>
-            <form className="w-50 m-auto mt-5 bg-primary p-2    ">
+        <div className="info" >
+            <form className="w-50 m-auto mt-5  p-2 loginCard" >
         <div>
             <h2 className="text-center">Account Info</h2>
 
