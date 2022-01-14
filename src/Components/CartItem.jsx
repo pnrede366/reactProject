@@ -1,24 +1,20 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Route, useHistory } from "react-router";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import Action from "../Redux/Action/Action";
-import { Link } from "react-router-dom";
-import { UserContext } from "./ContextData";
+
 
 const CartItem = (props) => {
-  const myContext = useContext(UserContext);
-  const reduxItem = useSelector((state) => state.Reducers);
-  const dispatch = useDispatch();
+ 
   const userLoginId = localStorage.getItem("userLogin");
   const [product, setproduct] = useState([]);
   const [myCart, setmyCart] = useState([]);
   const history = useHistory();
-  const [Counter, setCounter] = useState(0);
+  const [Counter, setCounter] = useState(1);
   const [ProductPrice, setProductPrice] = useState(0);
   const [ProdArray, setProdArray] = useState([]);
   const [removeProduct, setremoveProduct] = useState([])
+  const [refresh, setrefresh] = useState("")
+  let prodnum;
   let productStyle = {
     border: "none",
     boxShadow: "0px 0px 5px 5px rgb(234, 251, 255)",
@@ -26,88 +22,92 @@ const CartItem = (props) => {
   };
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/product`).then((response) => {
-      setproduct(response.data);
+ 
+    axios.get(`https://prcartnew.herokuapp.com/products`).then((response) => {
+      console.log(response.data);
+      setproduct(response.data.data)
     });
-    axios.get(`http://localhost:3000/user/${userLoginId}`).then((response) => {
-      setmyCart(response.data.cart);
+    axios.get(`https://prcartnew.herokuapp.com/cartproducts/${userLoginId}`).then((response) => {
+      setmyCart(response.data.data);
+      setProdArray(response.data.arr)
+      console.log(ProdArray);
+      console.log("cart",myCart);
+      
+    
     });
-    axios.get(`http://localhost:3000/user/${userLoginId}`).then((response) => {
-        setremoveProduct(response.data.cart)
-      });
-  }, []);
+   
+  }, [refresh]);
 
 
-  useEffect(() => {
-    axios.get(`http://localhost:3000/user/${userLoginId}`).then((response) => {
-      setmyCart(response.data.cart);
-    });
-  }, [myCart])
-  // console.log(product[1].id);
+
 
 
   const remove = (i) =>{
 
-      setremoveProduct((old)=>{
-        return old.filter((val,ind)=>{
-         
-          return val!=i;
-        })
-      })      
-      
-      
+      axios.post(`https://prcartnew.herokuapp.com/removecart`,{id:i,userid:userLoginId}).then((res)=>{
+        alert("removed")
+        setrefresh("ok")
+        
+      })
+      console.log(i);
         
       }
-
-      useEffect(() => {
       
-        axios.patch(`http://localhost:3000/user/${userLoginId}`,{
-          cart:removeProduct
-        })
-      }, [removeProduct])
+
+    
       
     
-
+    
 
 
   if (!userLoginId) {
     history.push("/login");
   }
 
+useEffect(() => {
+  axios.get(`https://prcartnew.herokuapp.com/cartproducts/${userLoginId}`).then((response) => {
+    setmyCart(response.data.data);
+    setProdArray(response.data.arr)
+  });
+}, [removeProduct])
   return ( 
-    <div style={{backgroundColor:'#fff',height:'100vh'}}>
+    <div style={{backgroundColor:'#fff'}} >
       <h3 className="text-center" >
         Cart
         <i class="fa text-dark fa-cart-plus" aria-hidden="true"></i>
       </h3>
 
       <div className="" >
-        {product.map((dd, i) => {
-          // if (dd.id == myCart[i])
+        {
+          ProdArray.length==0?<h1 className="bg-warning text-center p-4 text-light">Cart is empty 
+          <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+          </h1>:ProdArray.map((dd, i) => {
           
+       
             return (
-                  myCart.map((cc,j)=>{
-                    return (
-                      dd.id==cc?  <div className="d-flex justify-content-around align-items-center mb-5 mb-1" >
-                      <div className="col-3 col-sm-3 col-lg-1"  key={i} >
-                        <div className="card img-fluid " >
+              <div className="border-bottom  d-flex justify-content-around align-items-center py-4 flex-wrap" data-aos="zoom-in" >
+                      <div key={i} >
+                        <div className="text-center img-fluid " >
+                         
                           <img
-                            className=""
-                            src={dd.path}
+                            className="w-75 mx-auto mt-2 " style={{width:"100%",height: "20vh"}}
+                            src={dd.img}
                             alt=""
                           />
-                          <div className="pTitle">{dd.name}</div>
-                          <div className="pPrice">{dd.price} ₹</div>
+                          
+                          <div className="">{dd.name}</div>
+                          <div className="">{dd.price} ₹</div>
                         </div>
                       </div>
-                      <div className="col-2">
+                      <div className="col-md-3 col-sm-4 col-12 d-flex justify-content-center flex-column align-items-center  ">
                         <div className="d-flex ">
                           <button
                             className="btn btn-danger"
                             onClick={(e) => {
+                             
                               if (dd.quantity > 1) {
                                 // console.log(dd.quantity-=1)
-                                setCounter((dd.quantity -= 1));
+                                setCounter((dd.quantity  -= 1));
                                 setProductPrice(dd.price * dd.quantity);
                               }
                             }}
@@ -118,38 +118,16 @@ const CartItem = (props) => {
                           <button
                             className="btn btn-primary"
                             onClick={(e) => {
-                              // console.log(dd.quantity+=1)
                               setCounter((dd.quantity += 1));
                               setProductPrice(dd.price * dd.quantity);
-                              localStorage.setItem(
-                                `quantity  ${dd.id}`,
-                                JSON.stringify({
-                                  id: dd.id,
-                                  quantity: dd.quantity,
-                                })
-                              );
-                            
-                              setProdArray((old) => {
-                                return [
-                                  ...old,
-                                  JSON.parse(
-                                    localStorage.getItem(`quantity ${dd.id}`)
-                                  ),
-                                ];
-                              });
-                              // setFinalPrice(localStorage.getItem(`quantity ${dd.id}`))
-                              // setProductPrice(
-      
-                              // )
-                              // console.log(ProductPrice);
-                              // console.log(dd.price);
+                              
                             }}
                           >
                             +
                           </button>
                         </div>
       
-                        <div className="my-5">
+                        <div className="my-5 ">
                           <h6>Total Price: {dd.price * dd.quantity}</h6>
       
                           {}
@@ -159,38 +137,41 @@ const CartItem = (props) => {
                           <button
                             className=" btn btn-outline-primary"
                             onClick={() => {
-                              history.push("/productDetails", {'id': dd.id,'quantity':dd.quantity});
+                              history.push("/productDetails", {'id': dd._id,'quantity':Counter});
                             }}
                           >
+                           
                             View Product
                           </button>
                         </div>
                       </div>
-                      <div className="col-4">
+                      <div className=" d-flex align-items-center  ">
                         <button
                           class="btn btn-warning m-2"
                           onClick={() => {
-                            history.push("/placeorder",{'id': dd.id,'quantity':dd.quantity});
+                            history.push("/placeorder",{'id': dd._id,'quantity':Counter});
                           }}
                         >
                           Buy Now
                         </button>
                         <button className="btn btn-dark" onClick={()=>{
-                          remove(dd.id)
+                          remove(dd._id)
                         }}>
                           Remove <i class="fa fa-trash text-danger" aria-hidden="true"></i>
                         </button>
+                      
                       </div>
-                    </div>:''
-                    )
-                  })
+                    </div>
             );
-          
-        })
+            // }+
+            
+            
+          })
         }
+       
       </div>
     </div>
-    // </UserContext.provider>
+   
   );
 };
 

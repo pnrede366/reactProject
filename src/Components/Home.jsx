@@ -1,114 +1,212 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import { UserContext } from "./ContextData";
 import Products from "./Products";
 import axios from "axios";
-import '../Assets/Product.css'
+
+import { getProducts } from '../Action/CatAction';
 import { Toast,Row,Col,Button,ToastContainer } from "react-bootstrap";
 import LandingPage from "./LandingPage";
+import { useDispatch, useSelector } from "react-redux";
+import Aos from "aos"
 const Home = () => {
   const [show, setShow] = useState(false)
   const [Data, setData] = useState([])
-  const [Cart, setCart] = useState([])
-  const [OldCart, setOldCart] = useState([])
+  const [Cart, setCart] = useState("")
+  const [OldCart, setOldCart] = useState("")
   const [position, setPosition] = useState('bottom-end');
   const  userLoginId=localStorage.getItem("userLogin")
   const history = useHistory()
- 
-useEffect(() => {
-    axios.get("http://localhost:3000/product")
-      .then((response) => setData(response.data)      
-           );
-           axios.get(`http://localhost:3000/user/${userLoginId}`).then((response)=>{
-            setCart(response.data.cart)
-            // console.log(response.data.order);
-           })
+  const selector = useSelector(state => state.searchReducer)
+  const catSelector = useSelector(state => state.getProductsReducer)
 
-    }, [])
+ const dispatch = useDispatch()
+useEffect(() => {
+
+dispatch(getProducts(""))
+
+    axios.get("https://prcartnew.herokuapp.com/products")
+      .then((response) => setData(response.data.data)      
+           );
+
+           axios.get("https://prcartnew.herokuapp.com/cart")
+      .then((response) => console.log(response)    
+           );
+          
+  
+    }, []) 
 
     const addToCart = (id) =>{
+    
       if (!userLoginId) {
         history.push("/login");
       }
-            setCart((old)=>{
-              return [...old,id]
-            })
-              setShow(true)
+      else{
+
+      
+      axios.post("https://prcartnew.herokuapp.com/checkcart",{
+        userid:userLoginId,
+        productid:id,
+        quantity:0
+           })
+      .then((response) =>{ 
+
+
+        if (!response.data.success) {
+          
+          axios.post(`https://prcartnew.herokuapp.com/cart/`,{
+         
+            userid:userLoginId,
+                productid:id,
+                quantity:0
+            
+          }).then(()=>{
+      
+          alert("added to cart")
+          })
+        }
+        else{
+          alert("already in cart")
+
+        }
+        setOldCart(response.data.success)
+        
+      }
+      );
+    }
+        
             // console.log(Cart);
 
             
             
           }
 
-useEffect(() => {
-
-  axios.patch(`http://localhost:3000/user/${userLoginId}`,{
-    cart:Cart
-  })
-}, [Cart])
-
-       
+     
       
 
 return (
 <div  >
 <LandingPage/>
-<div className="d-flex justify-content-between pt-5 px-2 flex-wrap mainHome"> 
+{catSelector?<h1>|{catSelector}</h1>:<h1>|Products</h1>}
+<div id="productPage"  data-aos="fade-up" > 
 
   
 {
-  Data.map((dd,i)=>{
-    return (
-    <div className="pMain mb-5 w-25" key={i}>
-  
-<div className="card pCard p-1"  style={{backgroundColor:'#fff'}}>
-   <div className="card-header">
-   <img className="pImg" src={dd.path}  style={{height:'12rem'}}/>
-   </div>
-    <div className="pTitle m-1">{dd.name}</div>    
-     <div className="pPrice m-1" >Price: ₹ <span className="text-danger">{dd.price}</span> </div>
-    <div className=" btn-group buttonGroup w-100 mt-2" >
-    <button className=" btn btn-outline-danger " onClick={()=>{
-                                history.push("/productDetails", {'id': dd.id,'quantity':dd.quantity});
-                              }}>Buy Now <i class="fa fa-shopping-bag" aria-hidden="true"></i></button>
-   <button className=" btn btn-outline-primary " onClick={()=>{
-             addToCart(dd.id)
-         }}>Add To WishList <i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
-    
-        </div>
-     </div>
-  </div> 
-   ) 
-  
-})
-}
-</div>
-  
-<Row>
-<div style={{position:'relative',bottom:'0rem'}}>
-      <Col xs={6}>
-     <ToastContainer position={position} className="m-5 position-absolute">
-     <Toast position={position} onClose={() => setShow(false)} show={show} delay={3000} autohide>
-          <Toast.Header>
-            <img
-              src="holder.js/20x20?text=%20"
-              className="rounded me-2"
-              alt=""
-              />
-            <strong className="me-auto">PrCart</strong>
-          </Toast.Header>
-          <Toast.Body>Item Added To Cart 
-            <i class="fa fa-cart-plus text-primary" aria-hidden="true"></i>
-            </Toast.Body>
-        </Toast>
-     </ToastContainer>
-      </Col>
-</div>
+  Data.filter((val) => {
+    // console.log(selector);
+    if (selector == "") {
+      // console.log(search);
+      return val;
+    } else if (
+      val.name.toLowerCase().includes(selector.toLowerCase())
+    ) {
       
-    </Row>
+      // console.log(search.toLowerCase);
+      return val;
+    }
+  }).map((dd,i)=>{
+    
+    if (dd.category==catSelector) {
+    
+    return (
+      
+            
+          
+      <div  className="card text-center p-1 bg-light " id="cardId">
+         
+      <div style={{cursor :"pointer"}} onClick={()=>{
+      history.push("/productDetails", {'id': dd._id});
+    }} className="py-3 px-5">
+        <img src={dd.img} 
+        alt="" style={{width:"100%",height:"20vh"}} />
+    </div>
+    <div  className="uppercase">
+        {dd.name}
+    </div>
+    <div className="descr mx-auto my-1" style={{width:"10rem",height:"1rem",overflow:"hidden"}}>
+        {dd.descr}
+    </div>
+    <div className="d-flex mx-auto">
+        <h2 className="productPrice">{dd.price}</h2> <h2>₹</h2>
+    </div>
+    
+    <div>
+        
+       
+    </div>
   
 
-            </div>
+    
+    
+    <div className="d-flex justify-content-center align-items-center ">
+        <button className="btn btn-dark rounded-pill mx-2 my-2" onClick={()=>{
+          setCart(dd._id)
+          addToCart(dd._id)
+        }}>
+            <span>add to cart <i class="fa fa-cart-plus text-danger" aria-hidden="true"></i></span>
+        </button>
+        
+    </div>
+    
+  </div>
+     
+)}
+else if(catSelector==""){
+
+  return (
+    
+     
+           
+
+      <div  className="card text-center p-1 bg-light " id="cardId">
+         
+        <div style={{cursor :"pointer"}} onClick={()=>{
+        history.push("/productDetails", {'id': dd._id});
+      }} className="py-3 px-5">
+          <img src={dd.img} 
+          alt="" style={{width:"100%",height:"20vh"}} />
+      </div>
+      <div  className="uppercase">
+          {dd.name}
+      </div>
+      <div className="descr mx-auto my-1" style={{width:"10rem",height:"1rem",overflow:"hidden"}}>
+          {dd.descr}
+      </div>
+      <div className="d-flex mx-auto">
+          <h2 className="productPrice">{dd.price}</h2> <h2>₹</h2>
+      </div>
+      
+      <div>
+          
+         
+      </div>
+    
+
+      
+      
+      <div className="d-flex justify-content-center align-items-center ">
+          <button className="btn btn-dark rounded-pill mx-2 my-2" onClick={()=>{
+            setCart(dd._id)
+            addToCart(dd._id)
+          }}>
+              <span>add to cart <i class="fa fa-cart-plus text-danger" aria-hidden="true"></i></span>
+          </button>
+          
+      </div>
+      
+    </div>
+   
+)
+}
+
+
+   
+  })
+}
+
+</div>
+
+
+</div>     
 )
 }
 

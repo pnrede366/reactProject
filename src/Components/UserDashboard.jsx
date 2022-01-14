@@ -1,6 +1,6 @@
 import React from "react";
 import { Link,useHistory } from "react-router-dom";
-import "../Assets/UserDashboard.css";
+
 const UserDashboard = () => {
 
     const  userLoginId=localStorage.getItem("userLogin")
@@ -10,7 +10,7 @@ const UserDashboard = () => {
     }
     
   return (
-    <div className="d-flex justify-content-around dashboard flex-wrap" style={{backgroundImage:"url('https://images.pexels.com/photos/461077/pexels-photo-461077.jpeg?cs=srgb&dl=pexels-picjumbocom-461077.jpg&fm=jpg')",
+    <div className="d-flex justify-content-around  flex-wrap" style={{backgroundImage:"url('https://images.pexels.com/photos/461077/pexels-photo-461077.jpeg?cs=srgb&dl=pexels-picjumbocom-461077.jpg&fm=jpg')",
         backgroundPosition:'center',
         backgroundSize:'cover',
         

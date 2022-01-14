@@ -2,7 +2,6 @@ import React from 'react'
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
 import AdminPanel from "./Admin/AdminPanel";
-import axios from "axios";
 import AdminDashboard from "./Admin/AdminDashboard";
 import Home from "./Home";
 import Userlogin from "./Userlogin";
@@ -15,9 +14,13 @@ import CartItem from './CartItem'
 import ProductDetails from "./ProductDetails";
 import Placeorder from "./Placeorder";
 import OrderSuccess from "./OrderSuccess";
-import '../Assets/BsNav.css'
+
+
+
+
 
 const BsNav = () => {
+  
     return (
       <Router>
         <div>
@@ -56,28 +59,15 @@ const BsNav = () => {
     </Navbar.Collapse>
   </Container>
 </Navbar>
+
+
+<div>
+  
+</div>
      
      
             
         </div>
-        <Switch>
-        <Route path="/AdminPanel">
-          <AdminPanel></AdminPanel>
-        </Route>
-        <Route exact path="/AdminDashboard" component={AdminDashboard} />
-        <Route exact path="/" component={Home} />
-        <Route path="/login" component={Userlogin}></Route>
-        <Route path="/signup" component={Signup}></Route>
-        <Route path="/userDashboard" component={UserDashboard}></Route>
-        <Route path="/userAccount" component={UserAccount}></Route>
-        <Route path="/orders" component={Orders}></Route>
-        <Route path="/product" component={Products}></Route>
-        <Route path="/cart" component={CartItem}></Route>
-        <Route path="/productDetails" component={ProductDetails}></Route>
-        <Route path="/placeorder" component={Placeorder}></Route>
-        <Route path="/ordersuccess" component={OrderSuccess}></Route>
-
-      </Switch>
         </Router>
     )
 }

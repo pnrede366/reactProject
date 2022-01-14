@@ -1,10 +1,12 @@
 import React from 'react'
-import '../Assets/Product.css'
+
+import Homepage from './Homepage'
 
 const LandingPage = () => {
     return (
 <div>
-    <div className="main_wrapper">
+<Homepage/>
+    {/* <div className="main_wrapper">
                 <div className="home-wrapper">
                 <h1 className="title_main p-2">Shop With PrCart</h1>
                 <div className="text_main">Get Flat 10% Cashback On Credit Card </div>
@@ -15,7 +17,7 @@ const LandingPage = () => {
                 </div>
                 </div>
                
-    </div>   
+    </div>    */}
 </div>
     )
 }

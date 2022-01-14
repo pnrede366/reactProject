@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router';
-import '../Assets/OrderSuccess.css'
+
 import { Toast,Row,Col,Button,ToastContainer } from "react-bootstrap";
 
 const OrderSuccess = () => {
@@ -8,26 +8,26 @@ const OrderSuccess = () => {
     const [position, setPosition] = useState('bottom-end');
     const history = useHistory();
     const [Time, setTime] = useState(2)
-setTimeout(() => {
+// setTimeout(() => {
     
-    history.push('/')
-}, 2000);
+//     history.push('/')
+// }, 20000);
 
 setTimeout(() => {
     
     setTime((num)=>{
             return num-1
     })
-}, 1000);
+}, 20000);
 
     return (
-         <div className="parent p-1">
+         <div className=" p-1 text-center  justify-content-center">
                 <div class="m-5  d-flex flex-column align-items-center p-5">
 
 <h1 class="">Order Successful</h1>
-<div class="d-flex justify-content-between align-items-center my-5">
+<div class="d-flex justify-content-center align-items-center my-5 flex-wrap mx-auto">
 
-    <div><img style={{width:'20rem',height:'20rem'}}
+    <div><img style={{width:'10rem',height:'10rem'}}
             src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwebstockreview.net%2Fimages%2Fcheckmark-clipart-right-sign-15.png&f=1&nofb=1"
             alt="" class="mr-5" srcset=""/></div>
     <div class="d-flex flex-column justify-content-around font">
@@ -37,27 +37,7 @@ setTimeout(() => {
     </div>
 </div>
 </div>
-<Row>
-      <Col xs={6}>
-     <ToastContainer position={position} className="m-5">
-     <Toast position={position} onClose={() => setShow(false)} show={show} delay={3000} autohide>
-          <Toast.Header>
-            <img
-              src="holder.js/20x20?text=%20"
-              className="rounded me-2"
-              alt=""
-              />
-            <strong className="me-auto">PrCart</strong>
-          </Toast.Header>
-          <Toast.Body>
-              Redirecting To Home Page
-                <button className="btn btn-danger">{Time}</button>
-            </Toast.Body>
-        </Toast>
-     </ToastContainer>
-      </Col>
-      
-    </Row>
+
         </div>
     )
 }

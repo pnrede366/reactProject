@@ -1,37 +1,40 @@
 import axios from "axios";
 import React, { useEffect, useState } from 'react'
 import { useHistory } from "react-router";
-import '../Assets/ProductDetails.css'
+
 
 const ProductDetails = (props) => {
      const [product, setproduct] = useState([]) 
   const [Id, setId] = useState('')
   const history = useHistory();
+  const [Counter, setCounter] = useState(1);
+  const [ProductPrice, setProductPrice] = useState(0);
 
      useEffect(() => {
-    setId(props.location.state)        
-    axios.get(`http://localhost:3000/product`).then((response)=>{
-      setproduct(response.data);
+    setId(props.location.state.id)     
+    console.log(props.location.state);   
+    console.log(Id.id);
+    axios.get(`https://prcartnew.herokuapp.com/singleproduct/${props.location.state.id}`).then((response)=>{
+      setproduct(response.data.data)
+      console.log(response.data.data);
     });
  
   }, [])
     return (
-        <div className="productDetailsBg">
+        <div >
        {
-         product.map((dd,i)=>{
-           if (dd.id==props.location.state.id) {
-           return (
-              <div class='product d-flex justify-content-around'>
-              <div class='product-1 '>
-                  <img src={dd.path} alt='' style={{height:'50vh'}}/>
-                  <div class='d-flex'>
+        //  product.map((product,i)=>{
+          //  if (product.id==props.location.state.id) {
+          //  return (
+              <div class='product d-flex my-5 flex-wrap justify-content-center  align-items-center'>
+              <div class='product-1'>
+                  <img  alt='' style={{width:"15rem",height:"15rem"}} src={product.img} />
                   
-                  </div>
               </div>
-              <div class='product-2'>
-                  <h2>{dd.name}</h2>
-                  <h5><i class='fa fa-bolt text-danger p-1' aria-hidden='true' ></i>{dd.descr}</h5>
-                  <h3><i class='fa fa-inr p-2' aria-hidden='true'></i>{dd.price}</h3>
+              <div class='product-2  col-md-5 offset-1 p-4 ' >
+                  <h2>{product.name}</h2>
+                  <h5><i class='fa fa-bolt text-danger p-1' aria-hidden='true' ></i>{product.descr}</h5>
+                  <h3><i class='fa fa-inr p-2' aria-hidden='true'></i>{product.price}</h3>
                   
                   <div>
                   <h5>Available Offers</h5>
@@ -43,18 +46,50 @@ const ProductDetails = (props) => {
                   T&C</div>
                   <div><i class='fa fa-calendar-check-o text-primary py-2' aria-hidden='true'></i>No Cost EMI on Bajaj Finserv EMI Card on cart value above ₹4499
                   T&C</div>
+                  <div>
                   <button class='btn btn-warning ' onClick={
                     ()=>{
-                      history.push('/placeorder',props.location.state)
+                      history.push("/placeorder",{'id': product._id,'quantity':Counter});
                     }
                   }>Buy Now</button>
                   </div>
+                  <div className="col-md-3 col-sm-4 col-12 d-flex justify-content-center flex-column align-items-center  ">
+                        <div className="d-flex ">
+                          <button
+                            className="btn btn-danger"
+                            onClick={(e) => {
+                             
+                              if (product.quantity > 1) {
+                                // console.log(product.quantity-=1)
+                                setCounter((product.quantity  -= 1));
+                                setProductPrice(product.price * product.quantity);
+                              }
+                            }}
+                          >
+                            -
+                          </button>
+                          <button className="btn ">{product.quantity}</button>
+                          <button
+                            className="btn btn-primary"
+                            onClick={(e) => {
+                              setCounter((product.quantity += 1));
+                              setProductPrice(product.price * product.quantity);
+                              
+                            }}
+                          >
+                            +
+                          </button>
+                        </div>
+                        </div>
+      
+                  </div>
+              
               </div>
           </div>
-             )
+            //  )
              
-           }
-         })
+          //  }
+        //  })
        }
         </div>
     )
